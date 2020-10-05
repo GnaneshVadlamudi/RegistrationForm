@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.error {
+  color: #db2269;
+  font-size: 0.625em;
+  display: relative;
+}
+
+.inputStyle {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3px;
+  width: 75%;
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
