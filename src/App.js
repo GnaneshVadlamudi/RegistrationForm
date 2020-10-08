@@ -1,5 +1,8 @@
 import React from "react";
 import "./styles.css";
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Form';
+//import Form from 'bootstrap';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -71,41 +74,47 @@ export default class App extends React.Component {
     const {errors} = this.state;
     return (
       <div>
-      <h2>Candidate Registration</h2>
-      <form onSubmit={this.handleSubmit}>
-      <div className='inputStyle'>
-              <label htmlFor="candidateName">Candidate Name:</label>
-              <input type="text" id="candidateName" value={this.state.candidateName} onChange={this.handleChange} />
-              {errors.candidateName.length > 0 && 
+      <Form onSubmit={this.handleSubmit}>
+      <fieldset>
+      <legend>Candidate Registration</legend>
+
+      <Form.Group controlId="formGridCandidatename">
+      <Form.Label>Candidate Name:</Form.Label>
+      <Form.Control type="text" id="candidateName" value={this.state.candidateName} onChange={this.handleChange} placeholder="" />
+      {errors.candidateName.length > 0 && 
                 <span className='error'>{errors.candidateName}</span>}
-      </div>
-      <div className='inputStyle'>
-              <label htmlFor="candidatePh">Candidate Ph. No:</label>
-              <input type="number" id="candidatePh" value={this.state.candidatePh} onChange={this.handleChange} />
-              {errors.candidatePh.length > 0 && 
+      </Form.Group>
+
+      <Form.Group controlId="formGridCandidatePh">
+      <Form.Label>Candidate Ph. No:</Form.Label>
+      <Form.Control type="number" id="candidatePh" value={this.state.candidatePh} onChange={this.handleChange} placeholder="" />
+      {errors.candidatePh.length > 0 && 
                 <span className='error'>{errors.candidatePh}</span>}
-      </div>
-      <div className='inputStyle'>
-              <label htmlFor="candidateEmail">Candidate Email:</label>
-              <input type="text" id="candidateEmail" value={this.state.candidateEmail} onChange={this.handleChange} />
-              {errors.candidateEmail.length > 0 && 
+      </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Email</Form.Label>
+      <Form.Control type="email" id="candidateEmail" value={this.state.candidateEmail} onChange={this.handleChange} placeholder="Enter email" />
+      {errors.candidateEmail.length > 0 && 
                 <span className='error'>{errors.candidateEmail}</span>}
-      </div>
-      <div className='inputStyle'>
-              <label htmlFor="candidateCountry">Pick your Country:</label>
-              <select style={{marginTop:3}} type="email" id="candidateCountry" value={this.state.candidateCountry} onChange={this.handleChange}>
-              <option value="">Please Pick One</option>
-              <option value="america">America</option>
-              <option value="india">India</option>
-              <option value="uk">UK</option>
-              </select>
-              {errors.candidateCountry.length > 0 && 
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridCountry">
+      <Form.Label>Country</Form.Label>
+      <Form.Control as="select" id="candidateCountry" value={this.state.candidateCountry} onChange={this.handleChange} defaultValue="Choose...">
+        <option>Choose...</option>
+        <option value="america">America</option>
+        <option value="india">India</option>
+        <option value="uk">UK</option>
+      </Form.Control>
+      {errors.candidateCountry.length > 0 && 
                 <span className='error'>{errors.candidateCountry}</span>} 
-      </div>
+    </Form.Group>
         <div className='submit'>
               <button>Submit</button>
         </div>
-      </form>
+        </fieldset>
+      </Form>
       </div>
     );
   }
