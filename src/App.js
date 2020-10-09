@@ -79,7 +79,7 @@ export default class App extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-      <React.Fragment>
+      <div className="mainDiv">
         <Form onSubmit={this.handleSubmit}>
           <fieldset>
             <legend>Candidate Registration</legend>
@@ -89,6 +89,7 @@ export default class App extends React.Component {
               <Form.Label>Candidate Name: </Form.Label>
               <Form.Control
                 type="text"
+                className="inputStyle"
                 id="candidateName"
                 value={this.state.candidateName}
                 onChange={this.handleChange}
@@ -104,6 +105,7 @@ export default class App extends React.Component {
               <Form.Label>Candidate Ph. No: </Form.Label>
               <Form.Control
                 type="number"
+                className="inputStyle"
                 id="candidatePh"
                 value={this.state.candidatePh}
                 onChange={this.handleChange}
@@ -119,6 +121,7 @@ export default class App extends React.Component {
               <Form.Label>Email: </Form.Label>
               <Form.Control
                 type="email"
+                className="inputStyle"
                 id="candidateEmail"
                 value={this.state.candidateEmail}
                 onChange={this.handleChange}
@@ -134,6 +137,7 @@ export default class App extends React.Component {
               <Form.Label>Country: </Form.Label>
               <Form.Control
                 as="select"
+                className="inputStyle"
                 id="candidateCountry"
                 value={this.state.candidateCountry}
                 onChange={this.handleChange}
@@ -154,7 +158,7 @@ export default class App extends React.Component {
             </div>
           </fieldset>
         </Form>
-      </React.Fragment>
+      </div>
     );
   }
 }
