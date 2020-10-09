@@ -1,26 +1,22 @@
 import React from "react";
-import "./styles.css";
+import "./../styles.css";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Form";
 //import Form from 'bootstrap';
 
-export default class App extends React.Component {
+export default class Exam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       examSeries: "",
       Qualification: "",
       Center: "",
-
-      candidateName: "",
-      candidatePh: "",
-      candidateEmail: "",
-      candidateCountry: "",
+      CandidateNumber: "",
       errors: {
-        candidateName: "",
-        candidatePh: "",
-        candidateEmail: "",
-        candidateCountry: ""
+        examSeries: "",
+        Qualification: "",
+        Center: "",
+        CandidateNumber: ""
       }
     };
 
@@ -84,83 +80,90 @@ export default class App extends React.Component {
     const { errors } = this.state;
     return (
       <div className="mainDiv">
+        <label style={{}}>Exam Details</label>
         <Form onSubmit={this.handleSubmit}>
-          <fieldset>
-            <legend>Candidate Registration</legend>
-            <br />
+          <div
+            style={{
+              borderStyle: "groove",
+              paddingTop: 12,
+              paddingLeft: 16,
+              marginTop: 12,
+              width: 75 + "%"
+            }}
+          >
+            <label>Exam Series* </label>
+            <Form.Row className="form-group row">
+              <Form.Group
+                as={Col}
+                controlId="formGridState"
+                style={{ marginTop: 5, width: 40 + "%" }}
+              >
+                <Form.Control
+                  as="select"
+                  className="inputStyle"
+                  placeholder="Month"
+                  defaultValue="Choose..."
+                >
+                  <option>Choose...</option>
+                  <option>...</option>
+                </Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId="formGridCandidatename">
-              <Form.Label>Candidate Name: </Form.Label>
+              <Form.Group
+                as={Col}
+                controlId="formGridState"
+                style={{ width: 40 + "%" }}
+              >
+                <Form.Control
+                  as="select"
+                  className="inputStyle"
+                  placeholder="Year"
+                  defaultValue="Choose..."
+                >
+                  <option>Choose...</option>
+                  <option>...</option>
+                </Form.Control>
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Group controlId="formGridQualification">
+              <Form.Label>Qualification* </Form.Label>
               <Form.Control
                 type="text"
                 className="inputStyle"
-                id="candidateName"
-                value={this.state.candidateName}
+                id="Qualification"
+                value={this.state.Qualification}
                 onChange={this.handleChange}
                 placeholder=""
               />
-              {errors.candidateName.length > 0 && (
-                <span className="error">{errors.candidateName}</span>
-              )}
             </Form.Group>
-            <br />
 
-            <Form.Group controlId="formGridCandidatePh">
-              <Form.Label>Candidate Ph. No: </Form.Label>
+            <Form.Group as={Col} controlId="formGridCenter">
+              <Form.Label>Center* </Form.Label>
+              <Form.Control
+                type="text"
+                className="inputStyle"
+                id="Center"
+                value={this.state.Center}
+                onChange={this.handleChange}
+                placeholder="Search by number or name"
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridCountry">
+              <Form.Label>Candidate Number </Form.Label>
               <Form.Control
                 type="number"
                 className="inputStyle"
-                id="candidatePh"
-                value={this.state.candidatePh}
+                id="candidateNumber"
+                value={this.state.candidateNumber}
                 onChange={this.handleChange}
-                placeholder=""
               />
-              {errors.candidatePh.length > 0 && (
-                <span className="error">{errors.candidatePh}</span>
-              )}
             </Form.Group>
-            <br />
-
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email: </Form.Label>
-              <Form.Control
-                type="email"
-                className="inputStyle"
-                id="candidateEmail"
-                value={this.state.candidateEmail}
-                onChange={this.handleChange}
-                placeholder="Enter email"
-              />
-              {errors.candidateEmail.length > 0 && (
-                <span className="error">{errors.candidateEmail}</span>
-              )}
-            </Form.Group>
-            <br />
-
-            <Form.Group as={Col} controlId="formGridCountry">
-              <Form.Label>Country: </Form.Label>
-              <Form.Control
-                as="select"
-                className="inputStyle"
-                id="candidateCountry"
-                value={this.state.candidateCountry}
-                onChange={this.handleChange}
-                defaultValue="Choose..."
-              >
-                <option>Choose...</option>
-                <option value="america">America</option>
-                <option value="india">India</option>
-                <option value="uk">UK</option>
-              </Form.Control>
-              {errors.candidateCountry.length > 0 && (
-                <span className="error">{errors.candidateCountry}</span>
-              )}
-            </Form.Group>
-            <br />
-            <div className="submit">
-              <button>Submit</button>
-            </div>
-          </fieldset>
+          </div>
+          <div className="submit">
+            <button>Submit</button>
+          </div>
         </Form>
       </div>
     );

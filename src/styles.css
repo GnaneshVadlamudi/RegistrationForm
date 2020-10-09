@@ -9,10 +9,11 @@
 }
 
 .inputStyle {
-  width: 100%;
+  width: 95%;
   height: 15px;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-left: 16px;
+  margin-bottom: 16px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -23,9 +24,13 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 32px;
 }
 
 .mainDiv {
-  width: 65%;
+  width: 100%;
+}
+
+.examDiv {
+  border-style: ridge;
 }
