@@ -87,24 +87,21 @@ export default class Exam extends React.Component {
               borderStyle: "groove",
               paddingTop: 12,
               paddingLeft: 16,
+              paddingRight: 16,
               marginTop: 12,
               width: 75 + "%"
             }}
           >
             <label>Exam Series* </label>
-            <Form.Row className="form-group row">
+            {/*<Form.Row className="form-group row">
               <Form.Group
                 as={Col}
                 controlId="formGridState"
-                style={{ marginTop: 5, width: 40 + "%" }}
-              >
+                style={{ marginTop: 5, width: 40 + "%" }}>
                 <Form.Control
                   as="select"
-                  className="inputStyle"
-                  placeholder="Month"
-                  defaultValue="Choose..."
-                >
-                  <option>Choose...</option>
+                  className="inputStyle">
+                  <option value="" disabled selected hidden>Month</option>
                   <option>...</option>
                 </Form.Control>
               </Form.Group>
@@ -112,19 +109,31 @@ export default class Exam extends React.Component {
               <Form.Group
                 as={Col}
                 controlId="formGridState"
-                style={{ width: 40 + "%" }}
-              >
+                style={{ width: 40 + "%" }}>
                 <Form.Control
                   as="select"
-                  className="inputStyle"
-                  placeholder="Year"
-                  defaultValue="Choose..."
-                >
-                  <option>Choose...</option>
+                  className="inputStyle">
+                  <option value="" disabled selected hidden>Year</option>
                   <option>...</option>
                 </Form.Control>
               </Form.Group>
-            </Form.Row>
+          </Form.Row>*/}
+
+            <div class="input-group">
+              <select style={{ width: 20 + "%" }} className="inputStyle">
+                <option value="" disabled selected>
+                  Month
+                </option>
+                <option>...</option>
+              </select>
+              <span class="input-group-addon"> </span>
+              <select style={{ width: 20 + "%" }} className="inputStyle">
+                <option value="" disabled selected>
+                  Year
+                </option>
+                <option>...</option>
+              </select>
+            </div>
 
             <Form.Group controlId="formGridQualification">
               <Form.Label>Qualification* </Form.Label>
