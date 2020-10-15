@@ -8,10 +8,15 @@ export default class Exam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      examSeries: "",
-      Qualification: "",
-      Center: "",
-      CandidateNumber: "",
+      taskList: [
+        {
+          index: Math.random(),
+          examSeries: "",
+          Qualification: "",
+          Center: "",
+          CandidateNumber: ""
+        }
+      ],
       errors: {
         examSeries: "",
         Qualification: "",
@@ -76,105 +81,113 @@ export default class Exam extends React.Component {
     }
   }
 
+  addNewRow = (e) => {
+    this.setState((prevState) => ({
+      taskList: [
+        ...prevState.taskList,
+        {
+          index: Math.random(),
+          examSeries: "",
+          Qualification: "",
+          Center: "",
+          CandidateNumber: ""
+        }
+      ]
+    }));
+  };
+
   render() {
-    const { errors } = this.state;
     return (
-      <div className="mainDiv">
-        <label style={{}}>Exam Details</label>
-        <Form onSubmit={this.handleSubmit}>
-          <div
-            style={{
-              borderStyle: "groove",
-              paddingTop: 12,
-              paddingLeft: 16,
-              paddingRight: 16,
-              marginTop: 12,
-              width: 75 + "%"
-            }}
+      <React.Fragment>
+        <div className="mainDiv">
+          <label style={{}}>Exam Details</label>
+          {this.state.taskList.map(() => {
+            return (
+              <div>
+                <Form onSubmit={this.handleSubmit}>
+                  <div
+                    style={{
+                      borderStyle: "groove",
+                      paddingTop: 12,
+                      paddingLeft: 16,
+                      paddingRight: 16,
+                      marginTop: 12,
+                      width: 75 + "%"
+                    }}
+                  >
+                    <label>Exam Series* </label>
+                    <div class="input-group">
+                      <select
+                        style={{ width: 20 + "%" }}
+                        className="inputStyle"
+                      >
+                        <option value="" disabled selected>
+                          Month
+                        </option>
+                        <option>...</option>
+                      </select>
+                      <span class="input-group-addon"> </span>
+                      <select
+                        style={{ width: 20 + "%" }}
+                        className="inputStyle"
+                      >
+                        <option value="" disabled selected>
+                          Year
+                        </option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <Form.Group controlId="formGridQualification">
+                      <Form.Label>Qualification* </Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="inputStyle"
+                        id="Qualification"
+                        value={this.state.taskList.Qualification}
+                        onChange={this.handleChange}
+                        placeholder=""
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridCenter">
+                      <Form.Label>Center* </Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="inputStyle"
+                        id="Center"
+                        value={this.state.taskList.Center}
+                        onChange={this.handleChange}
+                        placeholder="Search by number or name"
+                      />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridCountry">
+                      <Form.Label>Candidate Number </Form.Label>
+                      <Form.Control
+                        type="number"
+                        className="inputStyle"
+                        id="candidateNumber"
+                        value={this.state.taskList.candidateNumber}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                  </div>
+                </Form>
+              </div>
+            );
+          })}
+          <button
+            onClick={this.addNewRow}
+            type="button"
+            className=""
+            style={{ marginTop: 20 }}
           >
-            <label>Exam Series* </label>
-            {/*<Form.Row className="form-group row">
-              <Form.Group
-                as={Col}
-                controlId="formGridState"
-                style={{ marginTop: 5, width: 40 + "%" }}>
-                <Form.Control
-                  as="select"
-                  className="inputStyle">
-                  <option value="" disabled selected hidden>Month</option>
-                  <option>...</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group
-                as={Col}
-                controlId="formGridState"
-                style={{ width: 40 + "%" }}>
-                <Form.Control
-                  as="select"
-                  className="inputStyle">
-                  <option value="" disabled selected hidden>Year</option>
-                  <option>...</option>
-                </Form.Control>
-              </Form.Group>
-          </Form.Row>*/}
-
-            <div class="input-group">
-              <select style={{ width: 20 + "%" }} className="inputStyle">
-                <option value="" disabled selected>
-                  Month
-                </option>
-                <option>...</option>
-              </select>
-              <span class="input-group-addon"> </span>
-              <select style={{ width: 20 + "%" }} className="inputStyle">
-                <option value="" disabled selected>
-                  Year
-                </option>
-                <option>...</option>
-              </select>
-            </div>
-
-            <Form.Group controlId="formGridQualification">
-              <Form.Label>Qualification* </Form.Label>
-              <Form.Control
-                type="text"
-                className="inputStyle"
-                id="Qualification"
-                value={this.state.Qualification}
-                onChange={this.handleChange}
-                placeholder=""
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridCenter">
-              <Form.Label>Center* </Form.Label>
-              <Form.Control
-                type="text"
-                className="inputStyle"
-                id="Center"
-                value={this.state.Center}
-                onChange={this.handleChange}
-                placeholder="Search by number or name"
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridCountry">
-              <Form.Label>Candidate Number </Form.Label>
-              <Form.Control
-                type="number"
-                className="inputStyle"
-                id="candidateNumber"
-                value={this.state.candidateNumber}
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-          </div>
-          <div className="submit">
-            <button>Submit</button>
-          </div>
-        </Form>
-      </div>
+            Add
+          </button>
+          <br />
+          <button style={{ marginTop: 20 }}>Submit</button>
+        </div>
+      </React.Fragment>
     );
   }
 }
